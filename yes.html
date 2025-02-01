@@ -185,6 +185,25 @@
             border-radius: 10px;
         }
 
+        .spotify-playlist {
+            margin: 20px 0;
+        }
+
+        .spotify-playlist a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #1DB954; /* Spotify green */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            transition: background 0.3s ease;
+        }
+
+        .spotify-playlist a:hover {
+            background: #1ED760; /* Lighter Spotify green */
+        }
+
         @media (max-width: 600px) {
             .kilig {
                 padding: 15px;
@@ -201,7 +220,7 @@
     
     <div class="kilig">
         <div class="love-message">
-            Thanking for clicking "yes". Now you are mine sherry :)
+            Thanks for clicking "Yes". Now you are  mine :)
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
@@ -217,6 +236,13 @@
         <div class="love-meter">
             <p>Our Love Meter:</p>
             <progress value="100" max="100"></progress>
+        </div>
+
+        <div class="spotify-playlist">
+            <p>Here's a gift for you sherry </p>
+            <a href="https://open.spotify.com/playlist/0fBTyahjrXMDV25pkCjc7L?si=Ajq6RYVaQ-SHpwQvSn0rNQ&pi=BF6YXvs5TH6K-" target="_blank">
+                Listen on Spotify 🎧
+            </a>
         </div>
 
         <div class="image-grid">
@@ -235,7 +261,7 @@
         </div>
 
         <div class="love-message">
-            Our Song    
+             Our Song   
             <audio id="sound" controls>
                 <source src="audio.mp3" type="audio/mpeg">
             </audio>
