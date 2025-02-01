@@ -1,0 +1,95 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #8A2BE2, #9400D3); /* Violet gradient */
+    color: #fff; /* White text for contrast */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    backdrop-filter: blur(10px); /* Adds a blur effect */
+    position: relative; /* Add this to contain the "No" button */
+}
+
+.proposal-box h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #FFD700; /* Gold color for emphasis */
+}
+
+.proposal-box p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #fff; /* White text */
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    position: relative; /* Add this to contain the "No" button */
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.yes-btn {
+    background: #FF69B4; /* Pink color for "Yes" button */
+    color: white;
+}
+
+.yes-btn:hover {
+    background: #FF1493; /* Darker pink on hover */
+    transform: scale(1.1);
+}
+
+.no-btn {
+    background: #9370DB; /* Light purple for "No" button */
+    color: white;
+    position: static; /* Reset position */
+}
+
+.no-btn:hover {
+    background: #7B68EE; /* Slightly darker purple on hover */
+}
+
+/* GIF Container */
+.images {
+    margin-top: 1rem;
+    display: none; /* Hide GIFs by default */
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.images img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.images img:hover {
+    transform: scale(1.1);
+}
