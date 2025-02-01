@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💖</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #ff69b4, #8a2be2, #9400d3);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+            overflow: hidden;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text x='8' y='24' style='font-size: 24px; fill: %23ff69b4;'>♥</text></svg>"), auto;
+        }
+
+        /* Animations */
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-20vh) rotate(360deg); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Container Styles */
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 600px; /* Increased width */
+            width: 90%;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Proposal Text */
+        .proposal-box h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        .proposal-box p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            white-space: normal; /* Allow text to wrap */
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .yes-btn {
+            background: #FF69B4;
+            color: white;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .yes-btn:hover {
+            background: #FF1493;
+            transform: scale(1.1);
+        }
+
+        .no-btn {
+            background: #9370DB;
+            color: white;
+            position: static;
+        }
+
+        .no-btn:hover {
+            background: #7B68EE;
+        }
+
+        /* Floating Hearts */
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            animation: float 6s linear infinite;
+            font-size: 24px;
+        }
+
+        /* Love Meter */
+        .love-meter {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .proposal-box h1 { font-size: 1.8rem; }
+            .proposal-box p { font-size: 1rem; }
+            .btn { padding: 0.6rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="hearts"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="proposal-box">
+            <h1>Hi Shehrevar! 💖</h1>
+            <p>
+                Prakhar this side. Since the day you started caring about me, I started to have feelings for you. 
+                You mean everything to me, and you've become my love and my everyday need. 
+                So, will you be my Valentine this year and for all the years to come?
+            </p>
+            <div class="buttons">
+                <a href="yes.html" class="btn yes-btn">Yes</a>
+                <button class="btn no-btn">No</button>
+                <div class="love-meter">Compatibility: 100% 💘</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Floating Hearts
+        function createHearts() {
+            const heartsContainer = document.querySelector('.hearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '♥';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // No Button Interactions
+        const noButton = document.querySelector('.no-btn');
+        const container = document.querySelector('.container');
+        let noClickCount = 0;
+
+        noButton.addEventListener('mouseover', () => {
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+
+            const maxX = containerRect.width - buttonRect.width;
+            const maxY = containerRect.height - buttonRect.height;
+
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+
+            // Show love meter
+            document.querySelector('.love-meter').style.display = 'block';
+        });
+
+        noButton.addEventListener('mouseleave', () => {
+            document.querySelector('.love-meter').style.display = 'none';
+        });
+
+        noButton.addEventListener('click', () => {
+            // Confetti effect
+            confetti({
+                particleCount: 50,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            // Auto-scroll to Yes after 3 tries
+            if (++noClickCount >= 3) {
+                document.querySelector('.yes-btn').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Yes Button Confetti
+        document.querySelector('.yes-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            confetti({
+                particleCount: 500,
+                spread: 200,
+                origin: { y: 0.6 }
+            });
+            setTimeout(() => window.location.href = 'yes.html', 1500);
+        });
+    </script>
+</body>
+</html>
